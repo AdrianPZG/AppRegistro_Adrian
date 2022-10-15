@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AppRegistro_AdrianPG</string>
+    <string name="user">spotify@gmail.com</string>
+    <string name="correo">usuario_spotify@gmail.com</string>
+    <string name="password">Crea una contraseña</string>
+    <string name="name">Introduce un nombre de perfil</string>
+    <string name="password2">Contraseña</string>
 </resources>
