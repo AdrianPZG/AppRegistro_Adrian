@@ -5,4 +5,6 @@
     <string name="password">Crea una contraseña</string>
     <string name="name">Introduce un nombre de perfil</string>
     <string name="password2">Contraseña</string>
+    <string name="password3">Nueva Contraseña</string>
+    <string name="password4">Confirmar Contraseña</string>
 </resources>

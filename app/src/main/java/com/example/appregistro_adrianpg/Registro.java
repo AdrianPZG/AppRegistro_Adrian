@@ -46,6 +46,7 @@ public class Registro extends AppCompatActivity {
         EditText pass = findViewById(R.id.password2);
         EditText name = findViewById(R.id.username2);
 
+
         logearse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +85,7 @@ public class Registro extends AppCompatActivity {
                             List2Json(info, list);
                         } else {
                             if (usuarios(list, username)) {
-                                Log.d(TAG, "esta ocupado mano");
+                                Log.d(TAG, "esta ocupado ");
                                 Toast.makeText(getApplicationContext(), "El nombre de usuario está ocupado, cambialo", Toast.LENGTH_LONG).show();
                             } else {
                                 info.setNombre(username);
@@ -93,8 +94,6 @@ public class Registro extends AppCompatActivity {
                                 List2Json(info, list);
                             }
                         }
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Introduzca un correo válido", Toast.LENGTH_LONG).show();
                     }
                 }
 
@@ -104,6 +103,11 @@ public class Registro extends AppCompatActivity {
                 }
                 if (pass.length() == 0){
                     Toast.makeText(getApplicationContext(), "Debes poner una contraseña valida", Toast.LENGTH_SHORT).show();
+                }
+                if (correo.length() == 0){
+                    Toast.makeText(getApplicationContext(), "Debes poner un correo valido", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getApplicationContext(), "Registro Exitoso", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -161,7 +165,7 @@ public class Registro extends AppCompatActivity {
             Log.d(TAG, json);
             writeFile(json);
         }
-        Toast.makeText(getApplicationContext(), "Registro Exitoso", Toast.LENGTH_SHORT).show();
+
     }
     private boolean writeFile(String text){
         File file = null;
@@ -171,7 +175,7 @@ public class Registro extends AppCompatActivity {
             fileOutputStream = new FileOutputStream( file );
             fileOutputStream.write(text.getBytes(StandardCharsets.UTF_8));
             fileOutputStream.close();
-            Log.d(TAG, "Listo");
+            Log.d(TAG, "COOL!");
             return true;
         }
         catch (IOException e){

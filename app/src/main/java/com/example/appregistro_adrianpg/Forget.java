@@ -1,23 +1,18 @@
 package com.example.appregistro_adrianpg;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.content.Intent;
 import android.widget.EditText;
 import android.widget.Toast;
-
 
 import com.example.appregistro_adrianpg.JSON.MyInfo;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,45 +22,47 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Login extends AppCompatActivity {
+public class Forget extends AppCompatActivity {
     private List<MyInfo> list;
     public static String TAG = "mensaje";
     String json = null;
-    public static String usr,passw;
+    public static String correoForgot,passForgot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_forget);
 
-        Button button1 = findViewById(R.id.button1);
-        Button olvidar = findViewById(R.id.forget);
-        EditText email = findViewById(R.id.email);
-        EditText pass = findViewById(R.id.pass);
+        EditText emailcito = findViewById(R.id.forgetEmail);
+        EditText  pswd = findViewById(R.id.forgetPass);
+        EditText confirm = findViewById(R.id.confirmPass);
+        Button restablecer = findViewById(R.id.change);
+        Button volver = findViewById(R.id.back);
         Read();
         json2List(json);
-        button1.setOnClickListener(new View.OnClickListener() {
+
+        restablecer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                usr = String.valueOf(email.getText());
-                passw = String.valueOf(pass.getText());
-                acceso(usr, passw);
+                correoForgot = String.valueOf(emailcito.getText());
+                passForgot = String.valueOf(pswd.getText());
+                Change();
             }
         });
 
-        olvidar.setOnClickListener(new View.OnClickListener() {
+        volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Login.this, Forget.class);
+                Intent i = new Intent(Forget.this, Login.class);
                 startActivity(i);
             }
         });
     }
 
-    public boolean Read() {
-        if(!isFileExits()){
+    public boolean Read(){
+        if(!isFileExists()){
             return false;
-    }
+        }
         File file = getFile();
         FileInputStream fileInputStream = null;
         byte[] bytes = null;
@@ -85,58 +82,45 @@ public class Login extends AppCompatActivity {
         return false;
     }
 
-    public void json2List(String json) {
+    public void json2List(String json){
         Gson gson = null;
         String mensaje = null;
-        if (json == null || json.length() == 0) {
+        if(json == null || json.length() == 0){
             Toast.makeText(getApplicationContext(), "Error json null or empty", Toast.LENGTH_SHORT).show();
             return;
         }
         gson = new Gson();
-        Type listType = new TypeToken<ArrayList<MyInfo>>() {
-        }.getType();
+        Type listType = new TypeToken<ArrayList<MyInfo>>(){}.getType();
         list = gson.fromJson(json, listType);
-        if (list == null || list.size() == 0) {
+        if(list == null || list.size() == 0){
             Toast.makeText(getApplicationContext(), "Error list is null or empty", Toast.LENGTH_LONG).show();
             return;
         }
     }
-
     private File getFile(){
         return new File(getDataDir() , Registro.archivo);
     }
 
-    private boolean isFileExits(){
+    private boolean isFileExists(){
         File file = getFile();
         if(file == null){
             return false;
         }
         return file.isFile() && file.exists();
     }
-
-    public void acceso(String usr , String pswd) {
+    public void Change(){
         int i = 0;
-        if (usr.equals("") || pswd.equals("")) {
-            Toast.makeText(getApplicationContext(), "Llena los campos", Toast.LENGTH_LONG).show();
-        } else {
-            for (MyInfo myInfo : list) {
-                if (myInfo.getCorreo().equals(usr) && myInfo.getContraseña().equals(pswd)) {
-                    Intent intent = new Intent(Login.this, Usser.class);
-                    startActivity(intent);
-                    i = 1;
-                }
-            }
-            if (i == 0) {
-                Toast.makeText(getApplicationContext(), "El usuario o contraseña son incorrectos", Toast.LENGTH_LONG).show();
+        for(MyInfo myInfo : list){
+            if (myInfo.getCorreo().equals(correoForgot)){
+                Intent intent = new Intent(Forget.this, Usser.class);
+                startActivity(intent);
+                i = 1;
+
             }
         }
+        if (i == 0){
+            Toast.makeText(getApplicationContext(), "El correo ingresado no existe o es incorrecto ",Toast.LENGTH_LONG).show();
+        }
     }
+
 }
-
-
-
-
-
-
-
-
