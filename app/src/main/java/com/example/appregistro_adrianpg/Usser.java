@@ -6,27 +6,40 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class Usser extends AppCompatActivity {
+import com.example.appregistro_adrianpg.JSON.MyInfo;
 
-    TextView nombre, correo, contra;
+public class Usser extends AppCompatActivity {
+    private TextView usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usser);
 
-        nombre = findViewById(R.id.textito1);
-        correo = findViewById(R.id.textito2);
-        contra = findViewById(R.id.textito3);
 
+        String aux = null;
+        MyInfo info = null;
+        Object object = null;
+        usuario = findViewById(R.id.Jungle);
         Intent intent = getIntent();
-        String email = intent.getStringExtra("email");
-        String password = intent.getStringExtra("password");
-        String username = intent.getStringExtra("username");
+        if( intent != null)
+        {
+            aux = intent.getStringExtra("Nombre" );
+            if( aux != null && aux.length()> 0 )
+            {
+                usuario.setText(aux);
+            }
+            if( intent.getExtras() != null ) {
+                object = intent.getExtras().get("MyInfo");
+                if (object != null) {
+                    if (object instanceof MyInfo) {
+                        info = (MyInfo) object;
+                        usuario.setText(info.getNombre());
+                    }
+                }
+            }
+        }
 
-        correo.setText(email);
-        contra.setText(password);
-        nombre.setText(username);
 
 
     }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +24,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +33,7 @@ public class Login extends AppCompatActivity {
     private List<MyInfo> list;
     public static String TAG = "mensaje";
     String json = null;
-    public static String usr,passw;
+    public static String usr, passw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +51,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 usr = String.valueOf(email.getText());
                 passw = String.valueOf(pass.getText());
-                acceso(usr, passw);
+                acceso();
             }
         });
 
@@ -63,23 +65,21 @@ public class Login extends AppCompatActivity {
     }
 
     public boolean Read() {
-        if(!isFileExits()){
+        if (!isFileExits()) {
             return false;
-    }
+        }
         File file = getFile();
         FileInputStream fileInputStream = null;
         byte[] bytes = null;
-        bytes = new byte[(int)file.length()];
-        try{
+        bytes = new byte[(int) file.length()];
+        try {
             fileInputStream = new FileInputStream(file);
             fileInputStream.read(bytes);
             json = new String(bytes);
             Log.d(TAG, json);
-        }
-        catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return false;
@@ -102,38 +102,37 @@ public class Login extends AppCompatActivity {
         }
     }
 
-    private File getFile(){
-        return new File(getDataDir() , Registro.archivo);
+    private File getFile() {
+        return new File(getDataDir(), Registro.archivo);
     }
 
-    private boolean isFileExits(){
+    private boolean isFileExits() {
         File file = getFile();
-        if(file == null){
+        if (file == null) {
             return false;
         }
         return file.isFile() && file.exists();
     }
 
-    public void acceso(String usr , String pswd) {
-        int i = 0;
-        if (usr.equals("") || pswd.equals("")) {
+    public void acceso(){
+        int i=0;
+        if (usr.equals("") || passw.equals("")){
             Toast.makeText(getApplicationContext(), "Llena los campos", Toast.LENGTH_LONG).show();
-        } else {
-            for (MyInfo myInfo : list) {
-                if (myInfo.getCorreo().equals(usr) && myInfo.getContraseña().equals(pswd)) {
-                    Intent intent = new Intent(Login.this, Usser.class);
-                    startActivity(intent);
-                    i = 1;
-                }
+        }
+        for(MyInfo myInfo : list){
+            if(myInfo.getCorreo().equals(usr) && myInfo.getContraseña().equals(passw)){
+                Intent intent = new Intent(Login.this, Usser.class);
+                intent.putExtra( "MyInfo" , myInfo );
+                startActivity(intent);
+                i=1;
             }
-            if (i == 0) {
-                Toast.makeText(getApplicationContext(), "El usuario o contraseña son incorrectos", Toast.LENGTH_LONG).show();
-            }
+        }
+        if(i==0){
+            Toast.makeText(getApplicationContext(), "El usuario o contraseña son incorrectos", Toast.LENGTH_LONG).show();
+            Log.d(TAG, passw);
         }
     }
 }
-
-
 
 
 

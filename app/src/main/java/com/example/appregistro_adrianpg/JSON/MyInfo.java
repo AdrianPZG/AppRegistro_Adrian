@@ -1,6 +1,8 @@
 package com.example.appregistro_adrianpg.JSON;
 
-public class MyInfo {
+import java.io.Serializable;
+
+public class MyInfo  implements Serializable {
 
     private String Correo;
     private String Contraseña;
@@ -17,4 +19,8 @@ public class MyInfo {
     public String getNombre() { return Nombre; }
 
     public void setNombre(String nombre) { Nombre = nombre; }
+
+    public MyInfo(){
+
+    }
 }
