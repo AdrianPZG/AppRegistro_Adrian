@@ -122,7 +122,7 @@ public class Login extends AppCompatActivity {
         for(MyInfo myInfo : list){
             if(myInfo.getCorreo().equals(usr) && myInfo.getContraseña().equals(passw)){
                 Intent intent = new Intent(Login.this, Usser.class);
-                intent.putExtra( "MyInfo" , myInfo );
+                intent.putExtra( "Objeto" , myInfo );
                 startActivity(intent);
                 i=1;
             }
