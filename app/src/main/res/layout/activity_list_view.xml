@@ -125,38 +125,33 @@
                         android:orientation="vertical">
 
                         <Button
+                            android:id="@+id/uno"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/green"
-                            android:textColor="@color/black"
                             android:elevation="6dp"
                             android:paddingRight="10dp"
-                            android:text="Altas"></Button>
+                            android:text="Altas"
+                            android:textColor="@color/black"></Button>
 
                         <Button
+                            android:id="@+id/dos"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/green"
-                            android:textColor="@color/black"
                             android:elevation="6dp"
-                            android:text="Bajas"></Button>
+                            android:text="Bajas"
+                            android:textColor="@color/black"></Button>
 
                         <Button
+                            android:id="@+id/tres"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/green"
-                            android:textColor="@color/black"
                             android:elevation="6dp"
                             android:paddingRight="10dp"
-                            android:text="Cambios"></Button>
-
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@color/green"
-                            android:textColor="@color/black"
-                            android:elevation="6dp"
-                            android:text="Consultas"></Button>
+                            android:text="Cambios"
+                            android:textColor="@color/black"></Button>
 
                     </LinearLayout>
 

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Usser extends AppCompatActivity {
+    private TextView usuario;
     private android.widget.ListView listView;
     private List<String> list;
     String aux;
@@ -22,35 +23,39 @@ public class Usser extends AppCompatActivity {
     TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Object object= null;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usser);
-        user = findViewById(R.id.Jungle);
+        String aux = null;
+        MyInfo info = null;
+        Object object = null;
+        usuario = findViewById(R.id.Jungle);
         Intent intent = getIntent();
-
-
-
-
-                        if( intent != null){
-                            aux = intent.getStringExtra("Usuario");
-                            if(aux != null && aux.length()>0){
-                                user.setText(aux);
-                            }
-                            if( intent.getExtras() != null){
-                                object = intent.getExtras().get("MyInfo");
-                                if(object != null){
-                                    if(object instanceof MyInfo){
-                                        myInfo = (MyInfo) object;
-                                        user.setText("Bienvenido " + myInfo.getNombre());
-
+        if( intent != null)
+        {
+            aux = intent.getStringExtra("Nombre" );
+            if( aux != null && aux.length()> 0 )
+            {
+                usuario.setText(aux);
+            }
+            if( intent.getExtras() != null ) {
+                object = intent.getExtras().get("MyInfo");
+                if (object != null) {
+                    if (object instanceof MyInfo) {
+                        info = (MyInfo) object;
+                        usuario.setText(info.getNombre());
                     }
                 }
             }
         }
+
+
+
+
         listView = (ListView) findViewById(R.id.listViewId);
         list = new ArrayList<String>();
         for( int i = 0; i < 1; i++)
         {
+
             list.add( String.format( "Contraseña %d" , i + 1 ) );
 
         }
