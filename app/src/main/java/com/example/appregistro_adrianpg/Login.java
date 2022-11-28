@@ -35,6 +35,7 @@ public class Login extends AppCompatActivity {
     String json = null;
     public static String usr, passw;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

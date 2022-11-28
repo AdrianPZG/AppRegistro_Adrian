@@ -1,13 +1,14 @@
 package com.example.appregistro_adrianpg.JSON;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyInfo  implements Serializable {
 
     private String Correo;
     private String Contraseña;
     private String Nombre;
-
     public String getCorreo() { return Correo; }
 
     public void setCorreo(String correo) { Correo = correo; }
@@ -19,6 +20,7 @@ public class MyInfo  implements Serializable {
     public String getNombre() { return Nombre; }
 
     public void setNombre(String nombre) { Nombre = nombre; }
+
 
     public MyInfo(){
 

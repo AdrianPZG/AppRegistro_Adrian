@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/item1"
-        android:title="Crear Contraseña" />
+        android:title="Agregar Contraseña" />
     <item
         android:id="@+id/item2"
         android:title="Olvide Contraseña" />
