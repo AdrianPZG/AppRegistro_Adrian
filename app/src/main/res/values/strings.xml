@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AppAndroid_Adrian</string>
+    <string name="usuario">Usuario</string>
+    <string name="pswd">Contraseña</string>
+    <string name="email">usuario_spotify@gmail.com</string>
+    <string name="usser">Introduce tu nombre de Usuario</string>
+</resources>
