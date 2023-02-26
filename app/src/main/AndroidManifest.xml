@@ -16,6 +16,14 @@
         android:theme="@style/Theme.AppAndroid_Adrian"
         tools:targetApi="31">
         <activity
+            android:name=".Mapita"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAbmfmlMmZfe8NmVia9jq0PmHnsUr7FCVg"/>
+
+        <activity
             android:name=".ListViewActivity"
             android:exported="false" />
         <activity

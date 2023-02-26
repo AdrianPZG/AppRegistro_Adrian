@@ -52,10 +52,20 @@ public class Login extends AppCompatActivity {
         Button register = findViewById(R.id.register);
         EditText usser = findViewById(R.id.usser);
         EditText pass = findViewById(R.id.pass);
+        Button API = findViewById(R.id.API);
 
         Read();
 
         json2List(json);
+
+        API.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login.this, Mapita.class);
+                startActivity(intent);
+
+            }
+        });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
