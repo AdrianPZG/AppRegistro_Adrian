@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".Usuario">
 
+
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#232323"
@@ -15,9 +17,21 @@
         tools:context=".ListViewActivity">
 
 
+        <Button
+            android:id="@+id/options"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/green"
+            android:text="Opciones"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <LinearLayout
             android:layout_width="363dp"
             android:layout_height="160dp"
+            android:layout_marginTop="25dp"
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
@@ -106,7 +120,8 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="8dp"
+            android:layout_marginTop="-17dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -183,7 +198,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingBottom="10dp"/>
+                            android:paddingBottom="10dp" />
 
 
                     </LinearLayout>

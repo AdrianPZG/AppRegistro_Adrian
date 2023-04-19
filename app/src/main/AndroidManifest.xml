@@ -3,7 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.appandroid_adrian">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -11,17 +14,30 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppAndroid_Adrian"
         tools:targetApi="31">
+        <activity
+            android:name=".Foto"
+            android:exported="false" />
+        <activity
+            android:name=".GPS"
+            android:exported="false" />
+        <activity
+            android:name=".Opciones"
+            android:exported="false" />
         <activity
             android:name=".Mapita"
             android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAbmfmlMmZfe8NmVia9jq0PmHnsUr7FCVg"/>
+            android:value="AIzaSyAbmfmlMmZfe8NmVia9jq0PmHnsUr7FCVg" />
+        <meta-data
+            android:name="android.app.lib_name"
+            android:value="" />
 
         <activity
             android:name=".ListViewActivity"
@@ -48,5 +64,5 @@
             </intent-filter>
         </activity>
     </application>
-
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
 </manifest>

@@ -6,12 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.appandroid_adrian.MyDesUtil.MyDesUtil;
@@ -64,7 +60,7 @@ public class Registro extends AppCompatActivity {
 
         registrarse = findViewById(R.id.registrarse);
         Button login = findViewById(R.id.logearse);
-        EditText usuario = findViewById(R.id.username);
+        EditText usuario = findViewById(R.id.ska);
         EditText pass = findViewById(R.id.password);
         EditText mail = findViewById(R.id.email);
 

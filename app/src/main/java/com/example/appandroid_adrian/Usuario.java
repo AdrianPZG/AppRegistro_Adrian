@@ -43,7 +43,7 @@ public class Usuario extends AppCompatActivity {
     public int pos = 0;
     public static MyInfo myInfo = null;
     EditText editText, editText1, editText2;
-    Button button, button1, button2;
+    Button button, button1, button2, button3;
 
 
     @Override
@@ -71,6 +71,7 @@ public class Usuario extends AppCompatActivity {
         button = findViewById(R.id.eliminar);
         button1 = findViewById(R.id.editar);
         button2 = findViewById(R.id.buttonAd);
+        button3 = findViewById(R.id.options);
         listView = (ListView) findViewById(R.id.listViewId);
         listo = new ArrayList<MyData>();
         listo = myInfo.getContras();
@@ -78,6 +79,7 @@ public class Usuario extends AppCompatActivity {
         listView.setAdapter(myAdapter);
         button.setEnabled(false);
         button1.setEnabled(false);
+
 
         if (listo.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Para agregar una contraseña de clic en el menú o en el (+)", Toast.LENGTH_LONG).show();
@@ -95,6 +97,8 @@ public class Usuario extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Para guardar los cambios de click en guardar cambios", Toast.LENGTH_LONG).show();
             }
         });
+
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,16 +155,23 @@ public class Usuario extends AppCompatActivity {
                 }
             }
         });
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Usuario.this, Opciones.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu Principal) {
-        boolean flag = false;
-        flag = super.onCreateOptionsMenu(Principal);
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.main_menu, Principal);
-        return flag;
+        getMenuInflater().inflate(R.menu.main_menu, Principal);
+        return true;
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -217,6 +228,7 @@ public class Usuario extends AppCompatActivity {
         }
         Toast.makeText(getApplicationContext(), "Guardado", Toast.LENGTH_LONG).show();
     }
+
 
     private boolean writeFile(String text) {
         File file = null;
